@@ -1,0 +1,37 @@
+package AlertBoxes;
+
+import javafx.application.Application;
+// import javafx.event.ActionEvent;
+// import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    Stage window;
+    Button b1;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("Throwing Alerts");
+
+        b1 = new Button("Click Me");
+        b1.setOnAction(e -> {
+            boolean a = ConfirmBox.display("Confirmation Box Title", "Select Yes or No");
+            System.out.println(a);
+        });
+
+        StackPane l1 = new StackPane();
+        l1.getChildren().add(b1);
+        Scene s = new Scene(l1, 300, 250);
+        window.setScene(s);
+        window.show();
+    }
+}
